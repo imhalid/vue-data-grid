@@ -1,0 +1,88 @@
+@import "../sass/variables"
+@import "../sass/utils"
+@import "../sass/transition"
+
+$fixed-cell-width: 10em
+$arrow-size: 8px
+
+.dg-table
+  position: relative // for context menu position
+
+.table
+  table-layout: fixed
+  width: 80%
+  margin: 0 auto
+  border-collapse: collapse
+  text-align: left
+  overflow: hidden
+
+.header
+  position: relative
+  width: fitted-cell-width(8)
+  padding: $cell-padding
+  border: 1px solid $border-color
+  background: $hover-color
+
+.header--date
+  border: none
+  width: $fixed-cell-width
+
+.header--customer
+  background: none
+  width: $fixed-cell-width
+
+.header--expandable
+  cursor: pointer
+
+  &::after
+    content: ''
+    position: absolute
+    right: 0
+    bottom: 0
+    border-style: solid
+    border-width: 0 0 $arrow-size $arrow-size
+    border-color: transparent transparent $primary-color transparent
+
+.cell
+  position: relative
+  box-sizing: border-box
+  border: 1px solid $border-color
+  white-space: nowrap
+  padding: 0
+  transition: background $medium
+
+  &:hover
+    background: $hover-color
+
+.cell--focus, .cell--focus:hover
+  background: $cell-color
+  box-shadow: $half-shadow
+
+.cell--placeholder
+  border: none
+  visibility: hidden
+
+.cell--customer
+  background: $hover-color
+
+.cell-content
+  display: inline-block
+  box-sizing: border-box
+  width: 100%
+  border-left: $cell-padding solid transparent
+  border-right: $cell-padding solid transparent
+  padding: $cell-padding 0
+  overflow: hidden
+  cursor: pointer
+
+.forgedCell
+  display: flex
+  align-items: center
+  position: absolute
+  top: 0
+  padding-left: $cell-padding
+  border: 1px solid $border-color
+  border-right: none
+  background: $hover-color
+  font-weight: 900
+  transition: $fast height

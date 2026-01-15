@@ -1,32 +1,3 @@
-<template lang="pug">
-label.roundCheckBox(:class="{'roundCheckBox--block': isBlock}")
-  input(type="checkbox", :value="value", :checked="value", @change="onChange")
-  span.roundBox(:class="{'roundBox--checked': value}")
-  span.label {{label}}
-</template>
-
-<script>
-export default {
-  props: {
-    value: {
-      type: Boolean,
-      required: true
-    },
-    label: {
-      type: String,
-      required: true
-    },
-    isBlock: Boolean
-  },
-  methods: {
-    onChange (event) {
-      this.$emit('input', event.target.checked)
-    }
-  }
-}
-</script>
-
-<style lang="sass">
 @import "../sass/variables"
 
 $radio-size: 0.8em
@@ -74,4 +45,3 @@ $border-color: #395374
   padding: 0 1em
   vertical-align: middle
   user-select: none
-</style>
