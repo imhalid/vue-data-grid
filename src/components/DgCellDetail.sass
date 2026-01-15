@@ -1,20 +1,3 @@
-<template lang="pug">
-.dg-cell-detail
-  .panel(@click.stop.self="onClick")
-    slot
-</template>
-
-<script>
-export default {
-  methods: {
-    onClick () {
-      this.$emit('click')
-    }
-  }
-}
-</script>
-
-<style lang="sass" scoped>
 @import '../sass/variables'
 
 .dg-cell-detail
@@ -44,4 +27,3 @@ export default {
 
   &:hover
     color: #fff
-</style>
