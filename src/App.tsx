@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from 'components/NavBar';
-import DgTable from 'components/DgTable';
+import SalesTable from 'components/SalesTable';
 import './App.sass';
 
 const App: React.FC = () => {
@@ -8,7 +8,7 @@ const App: React.FC = () => {
     <div id="app">
       <NavBar name="Lucien Lee" />
       <div className="dataTable">
-        <DgTable />
+        <SalesTable />
       </div>
     </div>
   );
