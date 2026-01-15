@@ -1,0 +1,3 @@
+## 2024-05-22 - Improving Accessibility of Custom Controls
+**Learning:** This application heavily relies on `div` elements with `onClick` handlers for interactive controls like filters and menus. While visually functional, these are inaccessible to keyboard and screen reader users. Replacing them with semantic `<button>` elements provides built-in keyboard support and accessibility, but requires explicitly resetting user agent styles (border, background, padding) to maintain the custom design.
+**Action:** When auditing legacy or converted codebases, look for `div`s acting as buttons. Prioritize converting them to semantic `<button>` elements with `type="button"` and appropriate ARIA labels, while ensuring CSS resets are applied to preserve the visual design.
