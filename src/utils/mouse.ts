@@ -1,7 +1,7 @@
 /* Mouse position calc */
 
 // normalize pageX and pageY in mouse event
-function normPagePosInEvent (e) {
+function normPagePosInEvent (e: any): any {
   e = e || window.event
 
   if (e.pageX === undefined) {
