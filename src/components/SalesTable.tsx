@@ -11,7 +11,8 @@ import DgCellMenu from './DgCellMenu';
 import DgCellDetail from './DgCellDetail';
 import DgFilter from './DgFilter';
 import classNames from 'classnames';
-import './DgTable.sass';
+import './SalesTable.sass';
+import Table, { Column } from './Table';
 
 interface RecordData {
   uid: number;
@@ -27,7 +28,7 @@ interface RecordData {
   [key: string]: any;
 }
 
-const DgTable: React.FC = () => {
+const SalesTable: React.FC = () => {
   // Initial Data
   const [records] = useState<RecordData[]>(initialRecords);
 
@@ -75,7 +76,7 @@ const DgTable: React.FC = () => {
 
   const [expanding, setExpanding] = useState('');
   const [focusCell, setFocusCell] = useState({
-    recordId: '' as number | string, // uid is number in json but treated potentially as string
+    recordId: '' as number | string,
     attribute: ''
   });
 
@@ -90,7 +91,6 @@ const DgTable: React.FC = () => {
   const sortedRecords = useMemo(() => {
     const order = sortAttribute ? sortOrders[sortAttribute] || 0 : 0;
 
-    // Filtered fitted in ranges records
     const filteredRecords = records.filter((record) => {
       return Object.keys(filterRanges).reduce((acc, key) => {
         return acc && filterRanges[key][0] <= record[key] && filterRanges[key][1] >= record[key];
@@ -98,7 +98,6 @@ const DgTable: React.FC = () => {
     });
 
     if (sortAttribute) {
-      // Sort by sortAttribute locally and by date globally
       return filteredRecords.slice().sort((a, b) => {
         const aSort = a[sortAttribute];
         const bSort = b[sortAttribute];
@@ -110,7 +109,6 @@ const DgTable: React.FC = () => {
         return aDate.isBefore(bDate) ? -1 : 1;
       });
     } else {
-      // Only sort by date
       return filteredRecords.slice().sort((a, b) => {
         return moment(a.date).isBefore(b.date) ? -1 : 1;
       });
@@ -129,7 +127,6 @@ const DgTable: React.FC = () => {
   const maxLenOfCols = useMemo(() => {
     return records.reduce((acc, record) => {
       Object.keys(record).forEach((prop) => {
-        // Assume string or convert to string for length
         const val = String(record[prop]);
         if (!acc[prop] || acc[prop] < val.length) {
           acc[prop] = val.length;
@@ -190,28 +187,22 @@ const DgTable: React.FC = () => {
     const isClickedSame = expanding === attribute;
     const isExpandables = expandables.includes(attribute);
 
-    // Collapsing when click the same one's header or not expandable one
     if ((isClickedSame && isClickedHeader) || !isExpandables) {
       setExpanding('');
       if (lastExpanded.current) lastExpanded.current.reverse();
     }
 
-    // Expanding when click not the same expandable one
     if (isExpandables && !isClickedSame) {
       setExpanding(attribute);
       if (lastExpanded.current) lastExpanded.current.reverse();
 
-      // Find the col element
-      // We can use refs
       const col = headerRefs.current[attribute];
       if (col) {
-        const targetWidth = (maxLenOfCols[attribute] || 0) / 2 + 1; // 1 for cell padding
-
-        // Use GSAP directly
+        const targetWidth = (maxLenOfCols[attribute] || 0) / 2 + 1;
         lastExpanded.current = gsap.to(col, {
             duration: 0.2,
             width: `${targetWidth}em`,
-            ease: "none" // Linear.easeNone in v3
+            ease: "none"
         });
       }
     }
@@ -225,15 +216,12 @@ const DgTable: React.FC = () => {
 
   const onCellClick = (attribute: string, id: number, event: React.MouseEvent) => {
     closeFilterMenu();
-    // behave as same as clicking header if it's expanable but not expanded yet
     if (expandables.includes(attribute) && expanding !== attribute) {
       return onHeaderClick(attribute, event);
     }
-    // reset when clicking the same cell
     if (focusCell.recordId === id && focusCell.attribute === attribute) {
       return clearFocusCell();
     }
-
     setFocusCell({ recordId: id, attribute });
     expandCol(attribute, event);
   };
@@ -253,24 +241,8 @@ const DgTable: React.FC = () => {
   };
 
   const openMenu = (event: React.MouseEvent) => {
-    // We need to calculate position relative to component.
-    // React event is SyntheticEvent.
-    // normPagePosInEvent expects native event or similar structure.
-    // We can pass event.nativeEvent or just use clientX/Y.
-
-    // The original logic:
-    // const rect = this.$el.getBoundingClientRect()
-    // const OFFSET = 1
-    // event = normPagePosInEvent(event)
-    // this.menuPos.x = event.pageX - rect.left + OFFSET
-    // this.menuPos.y = event.pageY - rect.top + OFFSET
-
-    // In React we can use ref to the root div.
-
     const nativeEvent = event.nativeEvent || event;
     const normalizedEvent = normPagePosInEvent(nativeEvent);
-
-    // We need the rect of the table container
     const rect = document.querySelector('.dg-table')?.getBoundingClientRect();
 
     if (rect) {
@@ -290,25 +262,30 @@ const DgTable: React.FC = () => {
     setShowMenu(false);
   };
 
-  return (
-    <div className="dg-table">
-      <table className="table" onClick={closeMenu}>
-        <thead>
-          <tr>
-            <th className="header--date" key="header--date"></th>
-            {filteredAttributes.map(attribute => (
-              <th
-                key={`header--${attribute}`}
-                className={classNames('header', headerClass(attribute))}
-                onClick={(e) => {
-                    if (e.target === e.currentTarget) onHeaderClick(attribute, e);
-                }}
-                onContextMenu={(e) => {
-                    e.preventDefault();
-                    openMenu(e);
-                }}
-                ref={el => headerRefs.current[attribute] = el}
-              >
+  const columns = useMemo(() => {
+    const cols: Column<RecordData>[] = [];
+
+    // Date Column (Generic implementation of the specific date group)
+    cols.push({
+      key: 'date',
+      title: '', // No header title
+      headerClassName: 'header--date',
+      className: (row, index) => classNames('cell--placeholder', { 'is-visible': isfirstOfDateGroup(index) }),
+      render: (val, row) => (
+         <span className="cell-content forgedCell" style={getHeightStyleByDate(row.date)}>
+           {toMMMMYYYY(row.date)}
+         </span>
+      )
+    });
+
+    // Dynamic Attributes
+    filteredAttributes.forEach(attribute => {
+        cols.push({
+            key: attribute,
+            title: capitalize(attribute),
+            headerClassName: classNames(headerClass(attribute)),
+            headerRender: (col) => (
+                <>
                 {capitalize(attribute)}
                 {filterables.includes(attribute) && (
                    <DgFilter
@@ -320,52 +297,48 @@ const DgTable: React.FC = () => {
                       onRange={(range) => onRange(attribute, range)}
                    />
                 )}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-           {sortedRecords.map((record, index) => (
-             <tr key={index}>
-               <td
-                 className={classNames('cell', 'cell--placeholder', { 'is-visible': isfirstOfDateGroup(index) })}
-                 key="cell--date"
-               >
-                 <span className="cell-content forgedCell" style={getHeightStyleByDate(record.date)}>
-                   {toMMMMYYYY(record.date)}
-                 </span>
-               </td>
-               {filteredAttributes.map(attribute => (
-                 <td
-                   className={classNames('cell', cellClass(attribute, record.uid))}
-                   key={`cell--${attribute}`}
-                 >
-                    {/* Components inside cell */}
-                    {interactables.includes(attribute) && focusCell.recordId === record.uid && focusCell.attribute === attribute && (
+                </>
+            ),
+            className: (row) => classNames(cellClass(attribute, row.uid)),
+            onHeaderClick: (e) => {
+                if (e.target === e.currentTarget) onHeaderClick(attribute, e);
+            },
+            onHeaderContextMenu: (e) => {
+                e.preventDefault();
+                openMenu(e);
+            },
+            onCellClick: (e, row) => onCellClick(attribute, row.uid, e),
+            render: (val, row) => (
+                <>
+                    {interactables.includes(attribute) && focusCell.recordId === row.uid && focusCell.attribute === attribute && (
                         <DgCellMenu />
                     )}
-                    {hasDetails.includes(attribute) && focusCell.recordId === record.uid && focusCell.attribute === attribute && (
+                    {hasDetails.includes(attribute) && focusCell.recordId === row.uid && focusCell.attribute === attribute && (
                         <DgCellDetail onClick={clearFocusCell}>
-                           <p>{record[attribute]}</p>
-                           <a href={getAddressLink(record[attribute])} target="_blank" rel="noreferrer">View in Google Maps</a>
+                           <p>{val}</p>
+                           <a href={getAddressLink(val)} target="_blank" rel="noreferrer">View in Google Maps</a>
                         </DgCellDetail>
                     )}
+                    <span className="cell-content">
+                        {isCurrency(attribute) ? toCurrency(val) : val}
+                    </span>
+                </>
+            )
+        });
+    });
 
-                    {isCurrency(attribute) ? (
-                        <span className="cell-content" onClick={(e) => onCellClick(attribute, record.uid, e)}>
-                           {toCurrency(record[attribute])}
-                        </span>
-                    ) : (
-                        <span className="cell-content" onClick={(e) => onCellClick(attribute, record.uid, e)}>
-                           {record[attribute]}
-                        </span>
-                    )}
-                 </td>
-               ))}
-             </tr>
-           ))}
-        </tbody>
-      </table>
+    return cols;
+  }, [filteredAttributes, activefilterables, filterBounds, filterRanges, focusCell, expanding, sortedRecords, numOfDateGroup, interactables, hasDetails, expandables, sortOrders]);
+
+  return (
+    <div className="dg-table sales-table">
+        <Table
+            data={sortedRecords}
+            columns={columns}
+            rowKey={(row) => row.uid}
+            onTableClick={closeMenu}
+            getHeaderRef={(key, el) => { headerRefs.current[key] = el; }}
+        />
       {showMenu && (
         <DgMenu
            position={menuPos}
@@ -380,4 +353,4 @@ const DgTable: React.FC = () => {
   );
 };
 
-export default DgTable;
+export default SalesTable;
