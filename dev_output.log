@@ -1,0 +1,336 @@
+
+> vue-data-grid-react@1.0.0 dev
+> vite
+
+(node:2362) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+  VITE v4.5.14  ready in 873 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+2 │ @import "./sass/variables"
+  │         ^^^^^^^^^^^^^^^^^^
+  ╵
+    src/App.sass 2:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import "../sass/variables"
+  │         ^^^^^^^^^^^^^^^^^^^
+  ╵
+    src/components/NavBar.sass 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import "../sass/variables"
+  │         ^^^^^^^^^^^^^^^^^^^
+  ╵
+    src/components/SalesTable.sass 1:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+2 │ @import "../sass/utils"
+  │         ^^^^^^^^^^^^^^^
+  ╵
+    src/components/SalesTable.sass 2:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+3 │ @import "../sass/transition"
+  │         ^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src/components/SalesTable.sass 3:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import "variables"
+  │         ^^^^^^^^^^^
+  ╵
+    src/sass/_utils.sass 1:9            @import
+    src/components/SalesTable.sass 2:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import 'variables'
+  │         ^^^^^^^^^^^
+  ╵
+    src/sass/_transition.sass 1:9       @import
+    src/components/SalesTable.sass 3:9  root stylesheet
+
+DEPRECATION WARNING [slash-div]: Using / for division outside of calc() is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div($len, 2) or calc($len / 2)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+
+  ╷
+4 │   @return $cell-padding + ($len / 2)
+  │                            ^^^^^^^^
+  ╵
+    src/sass/_utils.sass 4:28             fitted-cell-width()
+    src/components/SalesTable.sass 21:10  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import "../sass/variables"
+  │         ^^^^^^^^^^^^^^^^^^^
+  ╵
+    src/components/DgMenu.sass 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '../sass/variables'
+  │         ^^^^^^^^^^^^^^^^^^^
+  ╵
+    src/components/DgCellMenu.sass 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '../sass/variables'
+  │         ^^^^^^^^^^^^^^^^^^^
+  ╵
+    src/components/DgCellDetail.sass 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import "../sass/variables"
+  │         ^^^^^^^^^^^^^^^^^^^
+  ╵
+    src/components/DgFilter.sass 1:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+2 │ @import "../sass/utils"
+  │         ^^^^^^^^^^^^^^^
+  ╵
+    src/components/DgFilter.sass 2:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+3 │ @import "../sass/transition"
+  │         ^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src/components/DgFilter.sass 3:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import "variables"
+  │         ^^^^^^^^^^^
+  ╵
+    src/sass/_utils.sass 1:9          @import
+    src/components/DgFilter.sass 2:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import 'variables'
+  │         ^^^^^^^^^^^
+  ╵
+    src/sass/_transition.sass 1:9     @import
+    src/components/DgFilter.sass 3:9  root stylesheet
+
+DEPRECATION WARNING [slash-div]: Using / for division outside of calc() is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div($icon-size - $icon-rect-size, 2) or calc(($icon-size - $icon-rect-size) / 2)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+
+   ╷
+35 │   margin: ($icon-size - $icon-rect-size) / 2
+   │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ╵
+    src/components/DgCellMenu.sass 35:11  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import "../sass/variables"
+  │         ^^^^^^^^^^^^^^^^^^^
+  ╵
+    src/components/RoundCheckBox.sass 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '../sass/variables'
+  │         ^^^^^^^^^^^^^^^^^^^
+  ╵
+    src/components/MultiRangeSlider.sass 1:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+2 │ @import '../sass/utils'
+  │         ^^^^^^^^^^^^^^^
+  ╵
+    src/components/MultiRangeSlider.sass 2:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import "variables"
+  │         ^^^^^^^^^^^
+  ╵
+    src/sass/_utils.sass 1:9                  @import
+    src/components/MultiRangeSlider.sass 2:9  root stylesheet
+
+DEPRECATION WARNING [slash-div]: Using / for division outside of calc() is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div($radio-size * (1 - $shrink-factor), 2) or calc($radio-size * (1 - $shrink-factor) / 2)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+
+   ╷
+35 │     top: $radio-size * (1 - $shrink-factor) / 2
+   │          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ╵
+    src/components/RoundCheckBox.sass 35:10  root stylesheet
+
+DEPRECATION WARNING [slash-div]: Using / for division outside of calc() is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div($radio-size * (1 - $shrink-factor), 2) or calc($radio-size * (1 - $shrink-factor) / 2)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+
+   ╷
+36 │     left: $radio-size * (1 - $shrink-factor) / 2
+   │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ╵
+    src/components/RoundCheckBox.sass 36:11  root stylesheet
+
+DEPRECATION WARNING [slash-div]: Using / for division outside of calc() is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div($knob-size, 4) or calc($knob-size / 4)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+
+   ╷
+15 │   top: $knob-size / 4
+   │        ^^^^^^^^^^^^^^
+   ╵
+    src/components/MultiRangeSlider.sass 15:8  bar()
+    src/components/MultiRangeSlider.sass 58:5  root stylesheet
+
+DEPRECATION WARNING [slash-div]: Using / for division outside of calc() is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div($knob-size, 2) or calc($knob-size / 2)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+
+   ╷
+17 │   height: $knob-size / 2
+   │           ^^^^^^^^^^^^^^
+   ╵
+    src/components/MultiRangeSlider.sass 17:11  bar()
+    src/components/MultiRangeSlider.sass 58:5   root stylesheet
+
+DEPRECATION WARNING [slash-div]: Using / for division outside of calc() is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div($knob-size, 2) or calc($knob-size / 2)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+
+   ╷
+18 │   border-radius: $knob-size / 2
+   │                  ^^^^^^^^^^^^^^
+   ╵
+    src/components/MultiRangeSlider.sass 18:18  bar()
+    src/components/MultiRangeSlider.sass 58:5   root stylesheet
+
+7:26:26 PM [vite] hmr update /src/components/DgFilter.tsx
+7:26:41 PM [vite] page reload dist/index.html
