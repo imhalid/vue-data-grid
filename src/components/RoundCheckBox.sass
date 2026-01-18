@@ -19,6 +19,10 @@ $border-color: #395374
   clip: rect(0,0,0,0)
   pointer-events: none
 
+  &:focus-visible ~ .roundBox
+    box-shadow: 0 0 0 2px $bg-color, 0 0 0 4px $primary-color
+    border-color: $primary-color
+
 .roundBox
   position: relative
   display: inline-block
