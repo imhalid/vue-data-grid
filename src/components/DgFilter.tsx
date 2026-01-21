@@ -20,6 +20,8 @@ const DgFilter: React.FC<DgFilterProps> = ({ isActive, bound, range, onChange, o
     descending: false
   });
 
+  const panelId = React.useId();
+
   const onActive = () => {
     onChange(!isActive);
   };
@@ -50,11 +52,18 @@ const DgFilter: React.FC<DgFilterProps> = ({ isActive, bound, range, onChange, o
   return (
     <div className={classNames('filter', { 'filter--active': isActive })}>
       <img className="square" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" />
-      <div className="button" onClick={onActive}>
+      <button
+        type="button"
+        className="button"
+        onClick={onActive}
+        aria-label="Toggle filter menu"
+        aria-expanded={isActive}
+        aria-controls={isActive ? panelId : undefined}
+      >
         <Icon symbol="filter" className="icon--filter" />
-      </div>
+      </button>
       {isActive && (
-        <div className="panel">
+        <div className="panel" id={panelId}>
           <div className="control">
             <p className="control-label">SORT</p>
             <RoundCheckBox
