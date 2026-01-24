@@ -23,6 +23,18 @@
   right: 0
   bottom: 0
   text-align: center
+  // Reset button styles
+  background: transparent
+  border: none
+  padding: 0
+  outline: none
+  cursor: pointer
+  appearance: none
+
+  &:focus-visible
+    outline: 2px solid $primary-color
+    outline-offset: -2px
+    background-color: rgba($primary-color, 0.1)
 
 .square
   display: block
