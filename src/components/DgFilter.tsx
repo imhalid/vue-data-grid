@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useId } from 'react';
 import RoundCheckBox from './RoundCheckBox';
 import MultiRangeSlider from './MultiRangeSlider';
 import Icon from './Icon';
@@ -19,6 +19,7 @@ const DgFilter: React.FC<DgFilterProps> = ({ isActive, bound, range, onChange, o
     ascending: false,
     descending: false
   });
+  const panelId = useId();
 
   const onActive = () => {
     onChange(!isActive);
@@ -50,11 +51,18 @@ const DgFilter: React.FC<DgFilterProps> = ({ isActive, bound, range, onChange, o
   return (
     <div className={classNames('filter', { 'filter--active': isActive })}>
       <img className="square" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" />
-      <div className="button" onClick={onActive}>
+      <button
+        type="button"
+        className="button"
+        onClick={onActive}
+        aria-label="Filter"
+        aria-expanded={isActive}
+        aria-controls={panelId}
+      >
         <Icon symbol="filter" className="icon--filter" />
-      </div>
+      </button>
       {isActive && (
-        <div className="panel">
+        <div className="panel" id={panelId}>
           <div className="control">
             <p className="control-label">SORT</p>
             <RoundCheckBox
