@@ -50,9 +50,9 @@ const DgFilter: React.FC<DgFilterProps> = ({ isActive, bound, range, onChange, o
   return (
     <div className={classNames('filter', { 'filter--active': isActive })}>
       <img className="square" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" />
-      <div className="button" onClick={onActive}>
+      <button className="button" type="button" aria-label="Filter" onClick={onActive}>
         <Icon symbol="filter" className="icon--filter" />
-      </div>
+      </button>
       {isActive && (
         <div className="panel">
           <div className="control">
